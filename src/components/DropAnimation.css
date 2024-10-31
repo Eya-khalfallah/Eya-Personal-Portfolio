@@ -1,0 +1,84 @@
+
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  display: table;
+  width: 100%;
+  height: fit-content;
+  background-color: #171717;
+  color: #000;
+  line-height: 1.6;
+  position: absolute;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.lines {
+  position: absolute;
+  top: 0;
+  left: 27%;
+  right: 0;
+  height: 100%;
+  margin: auto;
+  width: 90vw; /* Adjust width as needed */
+  display: flex; /* Use flexbox to align children */
+  /*justify-content: center; /* Center the lines */
+  gap: 22%; /* Decrease gap between lines */
+}
+
+.line {
+  position: relative; /* Changed to relative for proper positioning */
+  width: 1px; /* Width of the line */
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 15vh; /* Height for diamond shape */
+    width: 15vh;  /* Width for diamond shape */
+    top: -7.5vh; /* Start above the viewport, half of the diamond's height */
+    left: -7.5vh; /* Center the diamond horizontally */
+    background: linear-gradient(to bottom, rgba(255, 192, 203, 0) 0%, #ff69b4 75%, #ff1493 100%);
+    animation: drop 12s infinite linear; /* Default is falling */
+    animation-fill-mode: forwards;
+    transform: rotate(45deg); /* Rotate to form diamond shape */
+  }
+
+ /* Alternate animations */
+ &:nth-child(odd) {
+  &::after {
+    animation: drop 12s infinite linear; /* Falling for odd children */
+  }
+}
+
+&:nth-child(even) {
+  &::after {
+    animation: ascend 12s infinite linear; /* Ascending for even children */
+  }
+}
+
+}
+
+@keyframes drop {
+  0% {
+    top: -50%; /* Start above the viewport */
+  }
+  100% {
+    top: 110%; /* Move down below the viewport */
+  }
+}
+
+@keyframes ascend {
+  0% {
+    top: 110%; /* Start below the viewport */
+  }
+  100% {
+    top: -50%; /* Move up above the viewport */
+  }
+}
