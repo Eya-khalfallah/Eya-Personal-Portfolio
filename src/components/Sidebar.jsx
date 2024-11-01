@@ -1,43 +1,31 @@
-// src/Sidebar.jsx
-import React from "react";
+import { HiOutlineHome, HiOutlineShare, HiOutlineUser, HiOutlineBriefcase, HiOutlineAcademicCap, HiOutlineDocumentText, HiOutlineMenu, HiOutlineChat, HiOutlineMail } from 'react-icons/hi';
 
 const Sidebar = () => {
   return (
-    <div className="w-1/4 h-full p-4 bg-gray-800 fixed">
-      <div className="text-center">
-        {/* Profile Picture */}
-        <img
-          src="https://via.placeholder.com/100"
-          alt="Profile"
-          className="rounded-full w-24 h-24 mx-auto mb-4"
-        />
-        {/* Profile Info */}
-        <h2 className="text-lg font-semibold">Brown Reddick</h2>
-        <p className="text-teal-400">Photographer</p>
-        {/* Additional Info */}
-        <div className="mt-4 space-y-2">
-          <p>Residence: <span className="text-gray-400">Canada</span></p>
-          <p>City: <span className="text-gray-400">Toronto</span></p>
-          <p>Age: <span className="text-gray-400">26</span></p>
-        </div>
-        {/* Skills */}
-        <div className="mt-6">
-          <h3 className="font-semibold mb-2">Skills</h3>
-          <div className="flex space-x-2">
-            {/* Skill Circles */}
-            {['HTML', 'CSS', 'JS', 'PHP'].map((skill, index) => (
-              <div key={index} className="w-12 h-12 flex items-center justify-center bg-gray-700 rounded-full">
-                <span className="text-xs">{skill}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Download CV Button */}
-        <button className="mt-6 w-full py-2 bg-teal-500 rounded-lg">
-          Download CV
-        </button>
-      </div>
-    </div>
+    <div className="fixed right-[4%] border-[1px]  h-[60%] top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between  p-4 rounded-full" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                {/* Main Icon at the Top */}
+                <button className="flex items-center justify-center w-12 h-12 rounded-full border-[1px]  " style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                    <h2 className='text-[#d67f92] font-bold'>EK.</h2>
+                </button>
+
+                {/* Navigation Icons */}
+                <nav className="flex flex-col items-center justify-between space-y-6 text-gray-300">
+                    <HiOutlineHome className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineUser className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineBriefcase className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineAcademicCap className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineDocumentText className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineMenu className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineChat className="hover:text-[#d67f92] size-5" />
+                    <HiOutlineMail className="hover:text-[#d67f92] size-5" />
+
+                </nav>
+
+                {/* Bottom Icon */}
+                <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] hover:bg-[#d67f92] text-gray-300 mt-4" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                    <HiOutlineShare className="hover:text-[#d67f92] size-5 bg-gray-300" />
+                </button>
+            </div>
   );
 };
 
