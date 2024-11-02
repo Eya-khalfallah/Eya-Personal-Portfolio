@@ -25,15 +25,15 @@ const SelfCard = () => {
                         <div className="mt-2 w-full space-y-2">
                             <div className='flex justify-between pl-4 pr-4'>
                                 <p>Residence:</p>
-                                <span className="text-gray-400">Tunisia</span>
+                                <span className="text-gray-300">Tunisia</span>
                             </div>
                             <div className='flex justify-between pl-4 pr-4'>
                                 <p>City:</p>
-                                <span className="text-gray-400">Sfax</span>
+                                <span className="text-gray-300">Sfax</span>
                             </div>
                             <div className='flex justify-between pl-4 pr-4'>
                                 <p>Age:</p>
-                                <span className="text-gray-400">24</span>
+                                <span className="text-gray-300">24</span>
                             </div>
 
                         </div>
@@ -52,8 +52,8 @@ const SelfCard = () => {
                             </div>
                             {/* Download CV Button */}
                             <button className="mt-6 w-full py-3 bg-[#c57284] rounded-full">
-                                <div className='flex space-x-2 place-items-center justify-center font-normal text-gray-300'>
-                                    <p className='text-base font-medium text-gray-300'>DOWNLOAD CV</p>
+                                <div className='flex space-x-2 place-items-center justify-center font-normal text-gray-200'>
+                                    <p className='text-base font-medium text-gray-200'>DOWNLOAD CV</p>
                                     <SlCloudDownload className='size-5' />
                                 </div>
 
