@@ -25,15 +25,15 @@ const SelfCard = () => {
                         <div className="mt-2 w-full space-y-2">
                             <div className='flex justify-between pl-4 pr-4'>
                                 <p>Residence:</p>
-                                <span className="text-gray-300">Tunisia</span>
+                                <span className="text-zinc-400">Tunisia</span>
                             </div>
                             <div className='flex justify-between pl-4 pr-4'>
                                 <p>City:</p>
-                                <span className="text-gray-300">Sfax</span>
+                                <span className="text-zinc-400">Sfax</span>
                             </div>
                             <div className='flex justify-between pl-4 pr-4'>
                                 <p>Age:</p>
-                                <span className="text-gray-300">24</span>
+                                <span className="text-zinc-400">24</span>
                             </div>
 
                         </div>

@@ -38,14 +38,14 @@ const ContactSection = () => {
         </p>
 
         <div className="w-full flex justify-between gap-10">
-          <div className="space-y-8 w-[30%]">
+          <div className="space-y-8 w-[35%]">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#d67f92]/10 flex items-center justify-center">
                 <MapPin className="w-6 h-6 text-[#d67f92]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-100">Location</h3>
-                <p className="text-zinc-400">Melbourne Street No 20</p>
+                <p className="text-zinc-400">Tunis, Tunisia</p>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-100">E-mail</h3>
-                <p className="text-zinc-400">smith@gmail.com</p>
+                <p className="text-zinc-400">eya.khalfallah@ensi-uma.tn</p>
               </div>
             </div>
 
@@ -65,7 +65,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-100">Phone</h3>
-                <p className="text-zinc-400">+976 34 99 99</p>
+                <p className="text-zinc-400">+216 28 086 759</p>
               </div>
             </div>
           </div>

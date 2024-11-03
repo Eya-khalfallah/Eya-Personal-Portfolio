@@ -18,7 +18,7 @@ const IntroduceSection = () => {
               Digital Landscape
             </h1>{" "}
             <br />
-            <p className="mt-2 text-lg text-gray-300 leading-relaxed">
+            <p className="mt-2 text-lg text-zinc-400 leading-relaxed">
               I am a{" "}
               <span className="font-semibold text-gray-200">
                 Frontend Developer
@@ -29,12 +29,12 @@ const IntroduceSection = () => {
             <br />
             <div className="flex space-x-2 place-items-center text-[#d67f92]">
               <FaCheckDouble className="size-4" />
-              <p className="text-base text-gray-300">Available for work</p>
+              <p className="text-base text-zinc-400">Available for work</p>
             </div>
             <br />
             {/* Hire Me Button */}
             <button className="mt-2 px-8 py-4 bg-[#c57284] rounded-full">
-              <div className="flex space-x-2 place-items-center font-normal text-gray-300">
+              <div className="flex space-x-2 place-items-center font-normal text-gray-100">
                 <GrSend className="size-5" />
                 <p className="text-base font-normal text-gray-200">HIRE ME</p>
               </div>

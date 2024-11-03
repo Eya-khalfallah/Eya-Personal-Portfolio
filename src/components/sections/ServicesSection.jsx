@@ -4,21 +4,21 @@ const ServicesSection = () => {
   const services = [
     {
       number: "01",
-      title: "UI/UX Design",
+      title: "Web Development",
       description: "I design products that are more than pretty. I make them shippable.",
-      icon: Palette,
+      icon: Rocket,
     },
     {
       number: "02",
-      title: "Web Development",
+      title: "Mobile Development",
       description: "I design products that are more than pretty. I make them shippable.",
       icon: Code,
     },
     {
       number: "03",
-      title: "SEO / Marketing",
+      title: "UI/UX Design",
       description: "I design products that are more than pretty. I make them shippable.",
-      icon: Rocket,
+      icon: Palette,
     },
     {
       number: "04",
@@ -38,7 +38,7 @@ const ServicesSection = () => {
         <h1 className="text-5xl font-light mb-8">
           My <span className="text-5xl font-bold text-[#d67f92]">Services</span>
         </h1>
-        <p className=" w-[90%] mt-2 text-lg leading-relaxed text-gray-300 mb-10">
+        <p className=" w-[90%] mt-2 text-lg leading-relaxed text-zinc-400 mb-10">
           I design products that are more than pretty. I make them shippable and
           usable, tempor non mollit dolor et do auter.
         </p>
@@ -46,10 +46,10 @@ const ServicesSection = () => {
         {services.map((service) => (
           <div
             key={service.number}
-            className="relative p-6 rounded-lg  border border-[#3d3049bb] overflow-hidden group hover:border-[#d67f92] transition-colors"
+            className="relative p-10 rounded-2xl  border border-[#3d3049bb] overflow-hidden group hover:border-[#d67f92] transition-colors"
           >
             <div 
-              className="absolute top-4 left-6 text-7xl font-bold leading-none text-transparent"
+              className="absolute top-8 left-10 text-7xl font-bold leading-none text-transparent"
               style={{
                 WebkitTextStroke: '2px #A1A1AA',
                 textStroke: '2px #D1D5DB.'
@@ -59,11 +59,11 @@ const ServicesSection = () => {
             </div>
             <div className="relative z-10">
               <div className="flex justify-end">
-                <service.icon className="w-6 h-6 text-[#d67f92]" />
+                <service.icon className="w-8 h-8 text-[#d67f92]" />
               </div>
-              <div className="mt-16">
+              <div className="mt-14">
                 <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed">{service.description}</p>
+                <p className="text-zinc-400 text-lg leading-relaxed">{service.description}</p>
               </div>
             </div>
           </div>

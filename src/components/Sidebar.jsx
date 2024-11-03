@@ -9,7 +9,7 @@ const Sidebar = () => {
                 </button>
 
                 {/* Navigation Icons */}
-                <nav className="flex flex-col items-center justify-between space-y-6 text-gray-300">
+                <nav className="flex flex-col items-center justify-between space-y-6 text-zinc-400">
                     <HiOutlineHome className="hover:text-[#d67f92] size-5" />
                     <HiOutlineUser className="hover:text-[#d67f92] size-5" />
                     <HiOutlineBriefcase className="hover:text-[#d67f92] size-5" />
@@ -22,8 +22,8 @@ const Sidebar = () => {
                 </nav>
 
                 {/* Bottom Icon */}
-                <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] hover:bg-[#d67f92] text-gray-300 mt-4" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
-                    <HiOutlineShare className="hover:text-[#d67f92] size-5 bg-gray-300" />
+                <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] hover:bg-[#d67f92] text-zinc-400 mt-4" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                    <HiOutlineShare className="hover:text-[#d67f92] size-5 bg-zinc-400" />
                 </button>
             </div>
   );

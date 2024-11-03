@@ -9,7 +9,7 @@ import ContactSection from "./sections/ContactSection";
 
 const Content = () => {
   return (
-    <div className="w-[52%] h-full p-4 top-10 right-[17%] absolute z-10">
+    <div className="w-[52%] h-full p-4 top-10 right-[17%] absolute z-10 mb-8">
       {/* Introduce Section */}
       <IntroduceSection />
 
@@ -33,6 +33,12 @@ const Content = () => {
 
       {/* Contact Section */}
       <ContactSection />
+
+      <div className="py-8">
+        <h2 className="text-base text-zinc-400 text-center ">
+          Copyright by @domain.com
+        </h2>
+      </div>
     </div>
   );
 };
