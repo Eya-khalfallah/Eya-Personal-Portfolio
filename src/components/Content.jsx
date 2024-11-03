@@ -36,7 +36,7 @@ const Content = () => {
 
       <div className="py-8">
         <h2 className="text-base text-zinc-400 text-center ">
-          Copyright by @domain.com
+          Eya Khalfallah © {new Date().getFullYear()}
         </h2>
       </div>
     </div>
