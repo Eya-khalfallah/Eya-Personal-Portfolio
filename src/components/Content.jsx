@@ -9,7 +9,7 @@ import ContactSection from "./sections/ContactSection";
 
 const Content = () => {
   return (
-    <div className="w-[52%] h-full p-4 top-10 right-[17%] absolute z-10 mb-8">
+    <div className="w-[52%] h-full p-4 top-10 right-[17.5%] absolute z-10 mb-8">
       {/* Introduce Section */}
       <IntroduceSection />
 

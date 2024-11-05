@@ -1,6 +1,6 @@
 import { HiOutlineMail } from "react-icons/hi";
 import { useState } from 'react'
-import { MapPin, Mail, Phone } from "lucide-react"
+import { MapPin, Mail, Linkedin } from "lucide-react"
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const ContactSection = () => {
     console.log('Form submitted:', formData)
   }
   return (
-    <section className=" p-[6%] bg-[#272231] rounded-2xl text-left">
+    <section className=" p-[6%] bg-[#272231] rounded-2xl text-left" id="contact">
       <div className="h-full flex flex-col justify-between ">
         <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
           <HiOutlineMail className="size-4" />
@@ -33,8 +33,7 @@ const ContactSection = () => {
           Contact <span className="text-5xl font-bold text-[#d67f92]">Me.</span>
         </h1>
         <p className=" w-[90%] mt-2 text-lg leading-relaxed text-zinc-400 mb-10">
-          I design products that are more than pretty. I make them shippable and
-          usable, tempor non mollit dolor et do auter.
+        Interested in working together or have a question? Feel free to reach out—I’d love to connect and discuss how I can help bring your ideas to life.
         </p>
 
         <div className="w-full flex justify-between gap-10">
@@ -61,11 +60,15 @@ const ContactSection = () => {
 
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#d67f92]/10 flex items-center justify-center">
-                <Phone className="w-6 h-6 text-[#d67f92]" />
+                <Linkedin className="w-6 h-6 text-[#d67f92]" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-100">Phone</h3>
-                <p className="text-zinc-400">+216 28 086 759</p>
+                <h3 className="text-lg font-semibold text-gray-100">LinkedIn</h3>
+                <a
+                  style={{ textDecoration: "none", color: "#f3f4f6" }}
+                  href="https://www.linkedin.com/in/eya-khalfallah/"
+                  target="_blank"
+                  rel="noreferrer"><p className="text-zinc-400">Eya Khalfallah</p></a>
               </div>
             </div>
           </div>

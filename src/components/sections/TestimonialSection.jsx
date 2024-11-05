@@ -54,7 +54,7 @@ const TestominialSection = () => {
   }, []);
 
   return (
-    <section className="mb-8 p-[6%] bg-[#272231] rounded-2xl text-left">
+    <section className="mb-8 p-[6%] bg-[#272231] rounded-2xl text-left" id="testimonials">
       <div className="h-full flex flex-col justify-between ">
         <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
           <HiOutlineChat className="size-4" />
@@ -65,8 +65,7 @@ const TestominialSection = () => {
           <span className="text-5xl font-bold text-[#d67f92]">People Say</span>
         </h1>
         <p className=" w-[90%] mt-2 text-lg leading-relaxed text-zinc-400 mb-10">
-          I design products that are more than pretty. I make them shippable and
-          usable, tempor non mollit dolor et do auter.
+        Here’s what clients and colleagues say about working with me. Their feedback reflects my commitment to quality, collaboration, and delivering results.
         </p>
 
         <div className="w-full max-w-6xl mt-4  text-gray-100 overflow-hidden">
