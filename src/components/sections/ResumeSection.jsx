@@ -1,4 +1,4 @@
-import { HiOutlineDocumentText } from "react-icons/hi";
+import { LuFileText } from "react-icons/lu";
 
 const experiences = [
   {
@@ -42,7 +42,7 @@ const ResumeSection = () => {
     <section className="mb-8 p-[6%] bg-[#272231] rounded-2xl text-left" id="resume">
       <div className="h-full flex flex-col justify-between ">
         <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
-          <HiOutlineDocumentText className="size-4" />
+          <LuFileText className="size-4" />
           <h3 className="text-xs font-medium text-gray-100"> RESUME </h3>
         </div>
         <h1 className="text-5xl font-light mb-8">

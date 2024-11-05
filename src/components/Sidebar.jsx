@@ -1,31 +1,90 @@
-import { HiOutlineHome, HiOutlineShare, HiOutlineUser, HiOutlineBriefcase, HiOutlineAcademicCap, HiOutlineDocumentText, HiOutlineMenu, HiOutlineChat, HiOutlineMail } from 'react-icons/hi';
+import { useEffect, useState } from "react";
+import {
+ 
+  
+  
+  
+  
+  
+  
+  HiOutlineShare,
+} from "react-icons/hi";
+import { LuHome,  LuUser2, LuGraduationCap, LuFileText,LuMail, LuMessageSquare,LuLayoutDashboard,LuBriefcase,} from "react-icons/lu";
+
+const sections = ["home", "about", "services", "skills", "resume", "projects", "testimonials", "contact"];
 
 const Sidebar = () => {
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const options = { threshold: 0.5 }; // Trigger when 50% of section is visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    sections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, []);
+
+  const isActive = (section) => activeSection === section ? "text-[#d67f92]" : "";
+
   return (
-    <div className="fixed right-[4%] border-[1px]  h-[60%] top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between  p-4 rounded-full" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
-                {/* Main Icon at the Top */}
-                <button className="flex items-center justify-center w-12 h-12 rounded-full border-[1px]  " style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
-                    <h2 className='text-[#d67f92] font-bold'>EK.</h2>
-                </button>
+    <div
+      className="fixed right-[6vw] h-screen transform  flex flex-col items-center justify-center "
+      style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}
+    >
+      <div className="border-[1px]  absolute flex flex-col items-center justify-between p-4 rounded-full" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+        {/* Main Icon at the Top */}
+      <button
+        className="flex items-center justify-center w-12 h-12 rounded-full border-[1px] border-zinc-600"
+      >
+        <h2 className="text-[#d67f92] font-bold">EK.</h2>
+      </button>
 
-                {/* Navigation Icons */}
-                <nav className="flex flex-col items-center justify-between space-y-6 text-zinc-400">
-                    <HiOutlineHome className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineUser className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineBriefcase className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineAcademicCap className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineDocumentText className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineMenu className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineChat className="hover:text-[#d67f92] size-5" />
-                    <HiOutlineMail className="hover:text-[#d67f92] size-5" />
+      {/* Navigation Icons */}
+      <nav className="flex flex-col items-center justify-between my-[3vh] space-y-[3vh] text-gray-100">
+        <a href="#home" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuHome className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("home")}`} />
+        </a>
+        <a href="#about" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuUser2 className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("about")}`} />
+        </a>
+        <a href="#services" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuBriefcase className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("services")}`} />
+        </a>
+        <a href="#skills" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuGraduationCap className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("skills")}`} />
+        </a>
+        <a href="#resume" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuFileText className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("resume")}`} />
+        </a>
+        <a href="#projects" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuLayoutDashboard className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("projects")}`} />
+        </a>
+        <a href="#testimonials" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuMessageSquare className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("testimonials")}`} />
+        </a>
+        <a href="#contact" style={{ textDecoration: "none", color: "inherit" }}>
+          <LuMail className={`hover:text-[#d67f92] size-6 cursor-pointer ${isActive("contact")}`} />
+        </a>
+      </nav>
 
-                </nav>
-
-                {/* Bottom Icon */}
-                <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] hover:bg-[#d67f92] text-zinc-400 mt-4" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
-                    <HiOutlineShare className="hover:text-[#d67f92] size-5 bg-zinc-400" />
-                </button>
-            </div>
+     
+      </div>
+    </div>
   );
 };
 

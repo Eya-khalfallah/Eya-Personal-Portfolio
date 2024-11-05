@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useRef } from 'react'
 
 const AnimatedBackground = () => {
@@ -15,8 +13,8 @@ const AnimatedBackground = () => {
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
 
-        const marginPercentage = 0.065; // Left margin as 5% of canvas width
-        const lineSpacing = 0.2; // Spacing factor for lines
+        const marginVw = 4 // Left margin as 6.5vw
+        const lineSpacingVw = 21 // Spacing for lines as 20vw
 
         class Diamond {
             constructor(x, ascending) {
@@ -72,13 +70,15 @@ const AnimatedBackground = () => {
             }
         }
 
-        const marginLeft = canvas.width * marginPercentage; // Responsive left margin
+        const vwToPx = (vw) => (vw / 100) * window.innerWidth
+
+        const marginLeft = vwToPx(marginVw)
 
         const diamonds = [
-            new Diamond(marginLeft + canvas.width * lineSpacing * 1, false),
-            new Diamond(marginLeft + canvas.width * lineSpacing * 2, true),
-            new Diamond(marginLeft + canvas.width * lineSpacing * 3, false),
-            new Diamond(marginLeft + canvas.width * lineSpacing * 4, true)
+            new Diamond(marginLeft + vwToPx(lineSpacingVw) * 1, false),
+            new Diamond(marginLeft + vwToPx(lineSpacingVw) * 2, true),
+            new Diamond(marginLeft + vwToPx(lineSpacingVw) * 3, false),
+            new Diamond(marginLeft + vwToPx(lineSpacingVw) * 4, true)
         ]
 
         function animate() {
@@ -95,12 +95,12 @@ const AnimatedBackground = () => {
         const handleResize = () => {
             canvas.width = window.innerWidth
             canvas.height = window.innerHeight
-            const newMarginLeft = canvas.width * marginPercentage // Update margin on resize
+            const newMarginLeft = vwToPx(marginVw)
 
-            diamonds[0].x = newMarginLeft + canvas.width * lineSpacing * 1
-            diamonds[1].x = newMarginLeft + canvas.width * lineSpacing * 2
-            diamonds[2].x = newMarginLeft + canvas.width * lineSpacing * 3
-            diamonds[3].x = newMarginLeft + canvas.width * lineSpacing * 4
+            diamonds[0].x = newMarginLeft + vwToPx(lineSpacingVw) * 1
+            diamonds[1].x = newMarginLeft + vwToPx(lineSpacingVw) * 2
+            diamonds[2].x = newMarginLeft + vwToPx(lineSpacingVw) * 3
+            diamonds[3].x = newMarginLeft + vwToPx(lineSpacingVw) * 4
         }
 
         window.addEventListener('resize', handleResize)
@@ -117,4 +117,5 @@ const AnimatedBackground = () => {
         />
     )
 }
-export default AnimatedBackground;
+
+export default AnimatedBackground

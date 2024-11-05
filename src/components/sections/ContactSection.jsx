@@ -1,4 +1,4 @@
-import { HiOutlineMail } from "react-icons/hi";
+import { LuMail } from "react-icons/lu";
 import { useState } from 'react'
 import { MapPin, Mail, Linkedin } from "lucide-react"
 
@@ -26,7 +26,7 @@ const ContactSection = () => {
     <section className=" p-[6%] bg-[#272231] rounded-2xl text-left" id="contact">
       <div className="h-full flex flex-col justify-between ">
         <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
-          <HiOutlineMail className="size-4" />
+          <LuMail className="size-4" />
           <h3 className="text-xs font-medium text-gray-100">CONTACT</h3>
         </div>
         <h1 className="text-5xl font-light mb-8">

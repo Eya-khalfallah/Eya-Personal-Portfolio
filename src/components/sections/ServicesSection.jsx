@@ -1,30 +1,30 @@
-import { HiOutlineBriefcase } from "react-icons/hi";
-import { Rocket, Megaphone, Palette, Code } from "lucide-react"
+import { LuBriefcase } from "react-icons/lu";
+import { LuRadioTower, LuAppWindow, LuPalette, LuCode } from "react-icons/lu";
 const ServicesSection = () => {
   const services = [
     {
       number: "01",
       title: "Web Development",
       description: "I build responsive websites that deliver seamless user experiences and meet your business goals.",
-      icon: Rocket,
+      icon: LuAppWindow,
     },
     {
       number: "02",
       title: "Mobile Development",
       description: "I create intuitive mobile applications for iOS and Android, ensuring engaging and user-friendly experiences.",
-      icon: Code,
+      icon: LuCode,
     },
     {
       number: "03",
       title: "UI/UX Design",
       description: "I design user-centered interfaces that are visually appealing and easy to navigate, enhancing user satisfaction.",
-      icon: Palette,
+      icon: LuPalette,
     },
     {
       number: "04",
       title: "IoT",
       description: "I develop IoT solutions that combine functionality and aesthetics, creating products that connect the digital and physical worlds.",
-      icon: Megaphone,
+      icon: LuRadioTower,
     },
   ];
   
@@ -33,7 +33,7 @@ const ServicesSection = () => {
     <section className="mb-8 p-[6%] bg-[#272231] rounded-2xl text-left" id="services">
       <div className="h-full flex flex-col justify-between ">
         <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
-          <HiOutlineBriefcase className="size-4" />
+          <LuBriefcase className="size-4" />
           <h3 className="text-xs font-medium text-gray-100"> SERVICES</h3>
         </div>
         <h1 className="text-5xl font-light mb-8">
