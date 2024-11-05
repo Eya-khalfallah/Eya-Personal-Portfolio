@@ -88,7 +88,7 @@ const SelfCard = () => {
             </div>
             {/* Download CV Button */}
             <a
-              href="Eya_Khalfallah_CV.pdf"
+              href="CV_Eya_Khalfallah.pdf"
               download="Eya_Khalfallah_CV.pdf"
               className="mt-4 w-full py-3 bg-[#c57284] rounded-full">
               {" "}
