@@ -1,16 +1,6 @@
 import { useEffect, useState } from "react";
-import {
- 
-  
-  
-  
-  
-  
-  
-  HiOutlineShare,
-} from "react-icons/hi";
 import { LuHome,  LuUser2, LuGraduationCap, LuFileText,LuMail, LuMessageSquare,LuLayoutDashboard,LuBriefcase,} from "react-icons/lu";
-
+import Logo from "../assets/EyaKlogo.png";
 const sections = ["home", "about", "services", "skills", "resume", "projects", "testimonials", "contact"];
 
 const Sidebar = () => {
@@ -48,11 +38,11 @@ const Sidebar = () => {
     >
       <div className="border-[1px]  absolute flex flex-col items-center justify-between p-4 rounded-full" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
         {/* Main Icon at the Top */}
-      <button
-        className="flex items-center justify-center w-12 h-12 rounded-full border-[1px] border-zinc-600"
+      <div
+        className="flex items-center justify-center w-14 h-14 p-1 rounded-full border-[1px] border-zinc-600"
       >
-        <h2 className="text-[#d67f92] font-bold">EK.</h2>
-      </button>
+        <img src={Logo} alt="Logo" className=" w-24 h-24 object-contain" />
+      </div>
 
       {/* Navigation Icons */}
       <nav className="flex flex-col items-center justify-between my-[3vh] space-y-[3vh] text-gray-100">
