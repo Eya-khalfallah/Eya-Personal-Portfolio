@@ -1,10 +1,6 @@
-"use client";
-
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Dialog, Transition } from "@headlessui/react";
-import { LuLayoutDashboard } from "react-icons/lu";
-import { X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { LayoutDashboard, X } from 'lucide-react';
 import {
   FaReact,
   FaNodeJs,
@@ -88,18 +84,18 @@ const ProjectsSection = () => {
 
   return (
     <section
-      className="mb-8 p-[5%] bg-[#272231] rounded-2xl text-left"
-      id="projects">
-      <div className="h-full flex flex-col justify-between ">
-        <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
-          <LuLayoutDashboard className="size-4" />
+      className="mb-8 p-4 sm:p-6 md:p-[5%] bg-[#272231] rounded-2xl text-left"
+      id="projects"
+    >
+      <div className="h-full flex flex-col justify-between">
+        <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border border-[#3d3049bb] text-[#d67f92] mb-6 sm:mb-10">
+          <LayoutDashboard className="w-4 h-4" />
           <h3 className="text-xs font-medium text-gray-100"> PROJECTS</h3>
         </div>
-        <h1 className="text-5xl font-light mb-8">
-          Featured{" "}
-          <span className="text-5xl font-bold text-[#d67f92]">Projects</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 sm:mb-8">
+          Featured <span className="font-bold text-[#d67f92]">Projects</span>
         </h1>
-        <p className=" w-[90%] mt-2 text-lg leading-relaxed text-zinc-400 mb-10">
+        <p className="w-full sm:w-[90%] mt-2 text-base sm:text-lg leading-relaxed text-zinc-400 mb-6 sm:mb-10">
           I've applied my skills in real-world projects through freelance work
           and internships, gaining practical experience in creating impactful
           digital solutions.
@@ -111,7 +107,8 @@ const ProjectsSection = () => {
               key={index}
               className={`h-full ${
                 index === 0 || index === 3 ? "md:col-span-2" : ""
-              }`}>
+              }`}
+            >
               <ProjectCard
                 project={project}
                 onClick={() => openPopup(project)}
@@ -121,11 +118,15 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <ProjectPopup
-        project={selectedProject}
-        isOpen={!!selectedProject}
-        onClose={closePopup}
-      />
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectPopup
+            project={selectedProject}
+            isOpen={!!selectedProject}
+            onClose={closePopup}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
@@ -136,16 +137,15 @@ function ProjectCard({ project, onClick }) {
 
   return (
     <div
-      className="relative overflow-hidden rounded-lg transition-all duration-300 ease-in-out group border-[1px] p-4 hover:cursor-pointer h-full"
-      style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}
+      className="relative overflow-hidden rounded-lg transition-all duration-300 ease-in-out group border border-[rgba(255,255,255,0.2)] p-4 hover:cursor-pointer h-full"
+      id="projects"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <img
         src={image}
         alt={title}
-        width={600}
-        height={300}
         className="w-full h-full object-cover transition rounded-lg duration-500 ease-in-out group-hover:blur-sm"
       />
 
@@ -154,27 +154,31 @@ function ProjectCard({ project, onClick }) {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: isHovered ? 0 : -20, opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="absolute top-4 right-4 bg-gray-900/80 px-3 py-1 rounded-full text-sm font-medium">
+          className="absolute top-4 right-4 bg-gray-900/80 px-3 py-1 rounded-full text-sm font-medium"
+        >
           {tag}
         </motion.span>
         <motion.h3
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
-          className="text-5xl text-gray-100 font-bold mb-2 text-center">
+          className="text-2xl sm:text-3xl md:text-4xl text-gray-100 font-bold mb-2 text-center"
+        >
           {title}
         </motion.h3>
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: isHovered ? 0 : 20, opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3, delay: 0.3 }}
-          className="text-4xl font-light text-center">
+          className="text-xl sm:text-2xl md:text-3xl font-light text-center"
+        >
           <div
             className="font-extrabold leading-none text-transparent"
             style={{
               WebkitTextStroke: "1px #f3f4f6",
               textStroke: "1px #D1D5DB",
-            }}>
+            }}
+          >
             {subtitle}
           </div>
         </motion.p>
@@ -218,112 +222,98 @@ function ProjectPopup({ project, isOpen, onClose }) {
   };
 
   return (
-    <Transition.Root show={isOpen} as={React.Fragment}>
-      <Dialog onClose={onClose} className="relative z-50">
-        <Transition.Child
-          as="div"
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0">
-          <div className="fixed inset-0 bg-black/80" aria-hidden="true" />
-        </Transition.Child>
-
-        <Transition.Child
-          as="div"
-          enter="ease-out duration-300"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95">
-          <div className="fixed inset-0 flex items-center justify-center p-4">
-            <Dialog.Panel className="relative mx-auto max-w-5xl w-full rounded-2xl bg-gradient-to-br from-[#2d2839] to-[#1f1b29] p-10 shadow-xl text-white">
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.9, y: 50 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 50 }}
+            transition={{ type: "spring", damping: 15 }}
+            className="relative transform overflow-hidden rounded-lg bg-gradient-to-br from-[#2d2839] to-[#1f1b29] text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute top-0 right-0 pt-4 pr-4 ">
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 bg-white/10 rounded-full p-2 hover:bg-white/20 transition-colors"
-                aria-label="Close popup">
-                <X className="w-6 h-6 text-white" />
+                aria-label="Close popup"
+              >
+                <X className="w-6 h-6 text-gray-100" />
               </button>
-
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="md:w-1/2 space-y-6">
-                  <div className="relative rounded-xl overflow-hidden shadow-lg">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-auto object-contain"
-                    />
-                    <div className="absolute top-4 left-4 bg-[#3d3049] text-gray-100 px-3 py-1 rounded-full text-sm font-medium">
-                      {project.tag}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl font-semibold mb-3 text-[#d67f92]">
-                      Technologies Used
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center bg-[#3d3049] text-gray-100 px-3 py-2 rounded-lg text-sm">
-                          {getTechIcon(tech)}
-                          <span className="ml-2">{tech}</span>
+            </div>
+            <div className="sm:flex sm:items-start">
+              <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                <h3 className="text-2xl sm:text-3xl font-bold leading-6 text-[#d67f92] mb-4 px-4 sm:px-6 pt-5">
+                  {project.title}
+                </h3>
+                <div className="mt-2 px-4 sm:px-6 pb-4">
+                  <div className="flex flex-col md:flex-row gap-6">
+                    <div className="md:w-1/2">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-auto rounded-lg shadow-lg"
+                      />
+                      <div className="mt-4">
+                        <h4 className="text-lg font-semibold mb-2 text-[#d67f92]">
+                          Technologies Used
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.1 }}
+                              className="flex items-center bg-[#3d3049] text-gray-100 px-3 py-2 rounded-lg text-sm"
+                            >
+                              {getTechIcon(tech)}
+                              <span className="ml-2">{tech}</span>
+                            </motion.div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hidden rounded-full md:block w-px bg-[#3d3049bb]"></div>
-
-                <div className="md:w-1/2 space-y-6">
-                  <div>
-                    <Dialog.Title className="text-4xl font-bold mb-2 text-[#d67f92]">
-                      {project.title}
-                    </Dialog.Title>
-                    <p className="text-xl font-light text-gray-100">
-                      {project.subtitle}
-                    </p>
-                  </div>
-
-                  <Dialog.Description className="text-lg text-zinc-400 leading-relaxed">
-                    {project.description}
-                  </Dialog.Description>
-
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      style={{ textDecoration: "none" }}
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center bg-[#d67f92] text-white px-6 py-3 rounded-lg hover:bg-[#c16c7f] transition-colors">
-                      <div className="flex justify-between place-items-center ">
-                        <FaGithub className="mr-2 text-xl text-gray-100" />
-                        <span className=" text-gray-100">
-                          View on GitHub
-                        </span>
                       </div>
-                    </a>
-                    {/* <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center bg-[#3d3049] text-white px-6 py-3 rounded-lg hover:bg-[#4d3e5d] transition-colors">
-                      <FaExternalLinkAlt className="mr-2" />
-                      Live Demo
-                    </a> */}
+                    </div>
+                    <div className="md:w-1/2">
+                      <p className="text-base text-zinc-400 mb-4">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 text-gray-100">
+                        <motion.a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center bg-[#d67f92] text-gray-100 px-6 py-3 rounded-lg hover:bg-[#c16c7f] transition-colors"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          <div className="flex justify-between place-items-center ">
+                            <FaGithub className="mr-2 text-xl text-gray-100" />
+                            <span className=" text-gray-100">
+                              View on GitHub
+                            </span>
+                          </div>
+                        </motion.a>
+                        
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </Dialog.Panel>
-          </div>
-        </Transition.Child>
-      </Dialog>
-    </Transition.Root>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 

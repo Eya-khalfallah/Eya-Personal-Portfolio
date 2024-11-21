@@ -1,8 +1,9 @@
-import { LuMail } from "react-icons/lu";
-import { useState } from 'react'
-import { MapPin, Mail, Linkedin } from "lucide-react"
 
-const ContactSection = () => {
+
+import { useState } from 'react'
+import { MailIcon, MapPinIcon, LinkedinIcon } from 'lucide-react'
+
+export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,25 +23,26 @@ const ContactSection = () => {
     // Handle form submission here
     console.log('Form submitted:', formData)
   }
+
   return (
-    <section className=" p-[6%] bg-[#272231] rounded-2xl text-left" id="contact">
-      <div className="h-full flex flex-col justify-between ">
-        <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
-          <LuMail className="size-4" />
+    <section className="p-4 sm:p-6 md:p-[6%] bg-[#272231] rounded-2xl text-left" id="contact">
+      <div className="h-full flex flex-col justify-between">
+        <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border border-[#3d3049bb] text-[#d67f92] mb-6 sm:mb-10">
+          <MailIcon className="w-4 h-4" />
           <h3 className="text-xs font-medium text-gray-100">CONTACT</h3>
         </div>
-        <h1 className="text-5xl font-light mb-8">
-          Contact <span className="text-5xl font-bold text-[#d67f92]">Me.</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 sm:mb-8">
+          Contact <span className="font-bold text-[#d67f92]">Me.</span>
         </h1>
-        <p className=" w-[90%] mt-2 text-lg leading-relaxed text-zinc-400 mb-10">
-        Interested in working together or have a question? Feel free to reach out—I’d love to connect and discuss how I can help bring your ideas to life.
+        <p className="w-full sm:w-[90%] mt-2 text-base sm:text-lg leading-relaxed text-zinc-400 mb-6 sm:mb-10">
+          Interested in working together or have a question? Feel free to reach out—I'd love to connect and discuss how I can help bring your ideas to life.
         </p>
 
-        <div className="w-full flex justify-between gap-10">
-          <div className="space-y-8 w-[35%]">
+        <div className="w-full flex flex-col lg:flex-row justify-between gap-8 lg:gap-10">
+          <div className="space-y-6 sm:space-y-8 w-full lg:w-[35%]">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#d67f92]/10 flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-[#d67f92]" />
+                <MapPinIcon className="w-6 h-6 text-[#d67f92]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-100">Location</h3>
@@ -50,7 +52,7 @@ const ContactSection = () => {
 
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#d67f92]/10 flex items-center justify-center">
-                <Mail className="w-6 h-6 text-[#d67f92]" />
+                <MailIcon className="w-6 h-6 text-[#d67f92]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-100">E-mail</h3>
@@ -60,53 +62,58 @@ const ContactSection = () => {
 
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#d67f92]/10 flex items-center justify-center">
-                <Linkedin className="w-6 h-6 text-[#d67f92]" />
+                <LinkedinIcon className="w-6 h-6 text-[#d67f92]" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-100">LinkedIn</h3>
                 <a
-                  style={{ textDecoration: "none", color: "#f3f4f6" }}
+                  className="text-zinc-400 hover:text-[#d67f92] transition-colors duration-300"
                   href="https://www.linkedin.com/in/eya-khalfallah/"
                   target="_blank"
-                  rel="noreferrer"><p className="text-zinc-400">Eya Khalfallah</p></a>
+                  rel="noreferrer"
+                >
+                  Eya Khalfallah
+                </a>
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="w-[55%] space-y-4">
+          <form onSubmit={handleSubmit} className="w-full lg:w-[55%] space-y-4">
             <input
-              className="w-full px-4 py-3 bg-[#272231] border border-zinc-600 rounded-md text-white placeholder-zinc-400"
+              className="w-full px-4 py-3 bg-[#272231] border border-zinc-600 rounded-md text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d67f92] focus:border-transparent"
               type="text"
               name="name"
               placeholder="Name"
               value={formData.name}
               onChange={handleChange}
+              required
             />
             <input
-              className="w-full px-4 py-3 bg-[#272231] border border-zinc-600 rounded-md text-white placeholder-zinc-400"
+              className="w-full px-4 py-3 bg-[#272231] border border-zinc-600 rounded-md text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d67f92] focus:border-transparent"
               type="email"
               name="email"
               placeholder="E-Mail"
               value={formData.email}
               onChange={handleChange}
+              required
             />
             <textarea
-              className="w-full px-4 py-3 bg-[#272231] border border-zinc-600 rounded-md text-white placeholder-zinc-400 placeholder min-h-[120px]"
+              className="w-full px-4 py-3 bg-[#272231] border border-zinc-600 rounded-md text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#d67f92] focus:border-transparent min-h-[120px]"
               name="message"
               placeholder="Message"
               value={formData.message}
               onChange={handleChange}
+              required
             />
             <button
               type="submit"
-              className=" py-3 px-7 bg-[#d67f92] font-medium hover:bg-[#d67f92b6] text-gray-100 rounded-full transition-colors duration-300">
+              className="w-full sm:w-auto py-3 px-7 bg-[#d67f92] font-medium hover:bg-[#d67f92b6] text-gray-100 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#d67f92] focus:ring-offset-2 focus:ring-offset-[#272231]"
+            >
               Send Message
             </button>
           </form>
         </div>
       </div>
     </section>
-  );
-};
-
-export default ContactSection;
+  )
+}

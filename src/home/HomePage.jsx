@@ -5,8 +5,8 @@ import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
   return (
-    <div className="h-screen w-[100%] flex justify-between text-white overflow-y-auto bg-black">
-      <AnimatedBackground />
+    <div className="w-full h-full flex flex-col xl:flex-row justify-between text-white overflow-hidden xl:overflow-y-auto ">
+      <AnimatedBackground className="fixed inset-0 z-0" />
       <SelfCard />
       <Content />
       <Sidebar />

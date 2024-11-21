@@ -1,29 +1,24 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react"
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const skills = [
   { name: "ReactJS", percentage: 85, icon: <ReactIcon /> },
   { name: "Flutter", percentage: 95, icon: <FlutterIcon /> },
   { name: "Tailwind", percentage: 90, icon: <TailwindIcon /> },
   { name: "Figma", percentage: 95, icon: <FigmaIcon /> },
-
   { name: "NestJS", percentage: 75, icon: <NestJSIcon /> },
   { name: "NodeJS", percentage: 80, icon: <NodeIcon /> },
   { name: "ExpressJS", percentage: 80, icon: <ExpressJSIcon /> },
   { name: "Python", percentage: 70, icon: <PythonIcon /> },
-
   { name: "MongoDB", percentage: 85, icon: <MongoDBIcon /> },
   { name: "MySQL", percentage: 80, icon: <MySQLIcon /> },
   { name: "PostgreSQL", percentage: 80, icon: <PostgreSQLIcon /> },
   { name: "Firebase", percentage: 90, icon: <FirebaseIcon /> },
-
   { name: "Arduino", percentage: 85, icon: <ArduinoIcon /> },
-  { name: "Raspberry Pi Pico", percentage: 85, icon: <RaspberryIcon />},
+  { name: "Raspberry Pi Pico", percentage: 85, icon: <RaspberryIcon /> },
   { name: "Esp32", percentage: 85, icon: <EspIcon /> },
   { name: "C++", percentage: 85, icon: <CppIcon /> },
-];
+]
 
 export default function SkillsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,20 +26,28 @@ export default function SkillsSection() {
   const autoPlayRef = useRef(null);
 
   const totalSlides = skills.length;
-  const visibleSlides = 4;
-  const slideWidth = 100 / visibleSlides;
+  const [currentVisibleSlides, setCurrentVisibleSlides] = useState(1);
+
+  const getVisibleSlides = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth >= 1280) return 4;
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    }
+    return 1;
+  };
 
   const updateCarousel = (index) => {
     if (carouselRef.current) {
-      carouselRef.current.style.transform = `translateX(-${
-        (index * slideWidth)*4
-      }%)`;
+      const slideWidth = 100 / currentVisibleSlides;
+      carouselRef.current.style.transform = `translateX(-${index * slideWidth}%)`;
     }
   };
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex + 1) %  visibleSlides ;
+      const newIndex = (prevIndex + currentVisibleSlides) % totalSlides;
       updateCarousel(newIndex);
       return newIndex;
     });
@@ -52,14 +55,20 @@ export default function SkillsSection() {
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex =
-        prevIndex === 0 ? visibleSlides - 1 : prevIndex - 1;
+      const newIndex = (prevIndex - currentVisibleSlides + totalSlides) % totalSlides;
       updateCarousel(newIndex);
       return newIndex;
     });
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      const newVisibleSlides = getVisibleSlides();
+      setCurrentVisibleSlides(newVisibleSlides);
+      setCurrentIndex(0);
+      updateCarousel(0);
+    };
+
     const startAutoPlay = () => {
       autoPlayRef.current = setInterval(nextSlide, 5000);
     };
@@ -70,6 +79,8 @@ export default function SkillsSection() {
       }
     };
 
+    window.addEventListener('resize', handleResize);
+    handleResize();
     startAutoPlay();
 
     const carousel = carouselRef.current;
@@ -79,23 +90,25 @@ export default function SkillsSection() {
     }
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       stopAutoPlay();
       if (carousel) {
         carousel.removeEventListener("mouseenter", stopAutoPlay);
         carousel.removeEventListener("mouseleave", startAutoPlay);
       }
     };
-  }, []);
+  }, [currentVisibleSlides]);
 
   return (
-    <section className="mb-8 p-[6%] bg-[#272231] rounded-2xl text-left" id="skills">
+    <section className="mb-8 p-4 sm:p-6 md:p-[6%] bg-[#272231] rounded-2xl text-left" id="skills">
       <div className="h-full flex flex-col justify-between">
-        <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-10">
+        <div className="w-fit h-min rounded-full flex space-x-2 justify-between place-items-center py-2 px-5 border-[1px] border-[#3d3049bb] text-[#d67f92] mb-6 sm:mb-10">
           <svg
             className="w-4 h-4"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M12 14L11.3 13.3C11.1 13.1 11 12.9 11 12.6C11 12.3 11.1 12.1 11.3 11.9L12 11.2L14.8 8.4C15.2 8 15.7 7.8 16.3 7.8C16.9 7.8 17.4 8 17.8 8.4L18.5 9.1C18.9 9.5 19.1 10 19.1 10.6C19.1 11.2 18.9 11.7 18.5 12.1L15.7 14.9L15 15.6C14.8 15.8 14.6 15.9 14.3 15.9C14 15.9 13.8 15.8 13.6 15.6L12.9 14.9L12 14ZM7.8 21C7.3 21 6.9 20.8 6.5 20.5C6.2 20.2 6 19.8 6 19.3V7.3C6 6.8 6.2 6.4 6.5 6.1C6.8 5.8 7.2 5.6 7.7 5.6H9.5V4.7C9.5 4.2 9.7 3.8 10 3.5C10.3 3.2 10.7 3 11.2 3H12.8C13.3 3 13.7 3.2 14 3.5C14.3 3.8 14.5 4.2 14.5 4.7V5.6H16.3C16.8 5.6 17.2 5.8 17.5 6.1C17.8 6.4 18 6.8 18 7.3V9.7L16.3 11.4V7.3H7.7V19.3H13.6L15.3 21H7.8Z"
               fill="currentColor"
@@ -104,10 +117,10 @@ export default function SkillsSection() {
           <h3 className="text-xs text-white font-medium"> SKILLS </h3>
         </div>
         <div>
-          <div className="flex justify-between align-top items-center mb-8">
-            <h1 className="text-5xl font-light text-white">
+          <div className="flex flex-col sm:flex-row justify-between align-top items-start sm:items-center mb-6 sm:mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-white mb-4 sm:mb-0">
               My{" "}
-              <span className="text-5xl font-bold text-[#d67f92]">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#d67f92]">
                 Advantages
               </span>
             </h1>
@@ -115,51 +128,60 @@ export default function SkillsSection() {
               <button
                 onClick={prevSlide}
                 className="p-2 rounded-full border hover:bg-[#3d3049bb] bg-[#272231] border-zinc-700 transition-colors"
-                aria-label="Previous slide">
+                aria-label="Previous slide"
+              >
                 <ChevronLeft className="w-5 h-5 text-zinc-400" />
               </button>
               <span className="text-[#d67f92] font-medium">
-                {currentIndex + 1}/{totalSlides / visibleSlides}
+                {Math.floor(currentIndex / currentVisibleSlides) + 1}/
+                {Math.ceil(totalSlides / currentVisibleSlides)}
               </span>
               <button
                 onClick={nextSlide}
                 className="p-2 rounded-full border hover:bg-[#3d3049bb] bg-[#272231] border-zinc-700 transition-colors"
-                aria-label="Next slide">
+                aria-label="Next slide"
+              >
                 <ChevronRight className="w-5 h-5 text-zinc-400" />
               </button>
             </div>
           </div>
 
-          <p className="w-[90%] text-zinc-400 mb-12">
-          Proficient in a diverse range of technologies, I leverage modern tools and frameworks to build innovative and efficient solutions.
+          <p className="w-full sm:w-[90%] text-zinc-400 mb-8 sm:mb-12 text-sm sm:text-base">
+            Proficient in a diverse range of technologies, I leverage modern tools and frameworks to build innovative and efficient solutions.
           </p>
 
           <div className="overflow-hidden">
             <div
               ref={carouselRef}
-              className="flex transition-transform duration-500 ease-in-out">
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                width: `${(100 * totalSlides) / currentVisibleSlides}%`,
+                transform: `translateX(-${(currentIndex * 100) / totalSlides}%)`,
+              }}
+            >
               {skills.map((skill, index) => (
                 <div
                   key={skill.name}
                   className="flex-shrink-0"
-                  style={{ width: `${100 / visibleSlides}%` }}>
-                  <div className="flex flex-col items-center">
-                    <div className="relative w-40 h-40">
+                  style={{ width: `${100 / totalSlides}%` }}
+                >
+                  <div className="flex flex-col items-center px-2 sm:px-4">
+                    <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40">
                       <svg className="w-full h-full">
                         <circle
-                          cx="80"
-                          cy="80"
-                          r="78"
+                          cx="50%"
+                          cy="50%"
+                          r="48%"
                           fill="transparent"
                           stroke="#d67f92"
                           strokeWidth="4"
                         />
                       </svg>
-                      <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-8xl">
+                      <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl sm:text-5xl md:text-6xl">
                         {skill.icon}
                       </span>
                     </div>
-                    <span className="mt-4 text-white font-medium">
+                    <span className="mt-4 text-white font-medium text-sm sm:text-base">
                       {skill.name}
                     </span>
                   </div>
