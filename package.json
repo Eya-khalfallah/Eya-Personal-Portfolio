@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.2.0",
     "@vercel/analytics": "^1.3.2",
+    "dotenv": "^16.4.5",
     "eya-personal-portfolio": "file:",
     "framer-motion": "^11.11.11",
     "lucide-react": "^0.454.0",

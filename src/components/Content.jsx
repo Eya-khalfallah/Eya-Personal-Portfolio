@@ -29,7 +29,7 @@ const Content = () => {
       <ProjectsSection />
 
       {/* TESTIMONIAL  Sections */}
-      <TestominialSection />
+      {/* <TestominialSection /> */}
 
       {/* Contact Section */}
       <ContactSection />

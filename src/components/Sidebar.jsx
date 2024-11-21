@@ -72,21 +72,20 @@ const Sidebar = () => {
       {/* Mobile Menu Button */}
       <div className="w-full flex justify-between top-0 right-0 left-0 fixed z-50 p-2 bg-[#3d3049e8] xl:hidden">
         <div className="flex justify-center items-center gap-x-2 p-1 ">
-        <div className="flex items-center justify-center w-12 h-12 rounded-full ">
-          <img src={Logo} alt="Logo" className="w-20 h-20 object-contain" />
+          <div className="flex items-center justify-center w-12 h-12 rounded-full ">
+            <img src={Logo} alt="Logo" className="w-20 h-20 object-contain" />
+          </div>
+          <h2 className="text-2xl lg:text-[2vw] font-bold">
+            <span className="text-gray-100">Eya</span>
+          </h2>
         </div>
-        <h2 className="text-2xl lg:text-[2vw] font-bold">
-          
-          <span className="text-gray-100">Eya</span>
-          
-        </h2>
-        </div>
-        
+
         <div className="flex items-center justify-center p-1 ">
-          <MenuIcon className="w-8 h-8 text-gray-100" onClick={toggleMobileMenu} />
-        
+          <MenuIcon
+            className="w-8 h-8 text-gray-100"
+            onClick={toggleMobileMenu}
+          />
         </div>
-        
       </div>
 
       {/* Sidebar for larger screens */}
@@ -117,11 +116,11 @@ const Sidebar = () => {
               icon={LayoutDashboardIcon}
               isActive={isActive}
             />
-            <NavItem
+            {/* <NavItem
               href="#testimonials"
               icon={MessageSquareIcon}
               isActive={isActive}
-            />
+            /> */}
             <NavItem href="#contact" icon={MailIcon} isActive={isActive} />
           </nav>
         </div>
@@ -149,11 +148,11 @@ const Sidebar = () => {
             icon={LayoutDashboardIcon}
             isActive={isActive}
           />
-          <NavItem
+          {/* <NavItem
             href="#testimonials"
             icon={MessageSquareIcon}
             isActive={isActive}
-          />
+          /> */}
           <NavItem href="#contact" icon={MailIcon} isActive={isActive} />
         </nav>
       </div>
