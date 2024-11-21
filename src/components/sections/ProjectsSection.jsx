@@ -237,25 +237,25 @@ function ProjectPopup({ project, isOpen, onClose }) {
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 50 }}
             transition={{ type: "spring", damping: 15 }}
-            className="relative transform overflow-hidden rounded-lg bg-gradient-to-br from-[#2d2839] to-[#1f1b29] text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-5xl"
+            className="relative transform rounded-lg bg-gradient-to-br from-[#2d2839] to-[#1f1b29] text-left shadow-xl transition-all sm:w-full sm:max-w-5xl max-w-full max-h-[85vh] overflow-auto top-8"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="absolute top-0 right-0 pt-4 pr-4 ">
+            <div className="absolute top-0 right-0 pt-1 sm:pt-4 pr-4 ">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 bg-white/10 rounded-full p-2 hover:bg-white/20 transition-colors"
+                className="absolute top-4 right-4 bg-white/10 rounded-full p-1 sm:p-2 hover:bg-white/20 transition-colors"
                 aria-label="Close popup"
               >
-                <X className="w-6 h-6 text-gray-100" />
+                <X className="w-4 h-4 sm:w-6 sm:h-6 text-gray-100" />
               </button>
             </div>
             <div className="sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                <h3 className="text-2xl sm:text-3xl font-bold leading-6 text-[#d67f92] mb-4 px-4 sm:px-6 pt-5">
+              <div className=" text-center sm:mt-0 sm:text-left w-full">
+                <h3 className="text-xl sm:text-3xl font-bold leading-6 text-[#d67f92] mb-4 px-4 sm:px-6 pt-5">
                   {project.title}
                 </h3>
                 <div className="mt-2 px-4 sm:px-6 pb-4">
-                  <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
                     <div className="md:w-1/2">
                       <img
                         src={project.image}
@@ -273,7 +273,7 @@ function ProjectPopup({ project, isOpen, onClose }) {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: index * 0.1 }}
-                              className="flex items-center bg-[#3d3049] text-gray-100 px-3 py-2 rounded-lg text-sm"
+                              className="flex items-center bg-[#3d3049] text-gray-100 px-2 py-1 sm:px-3 sm:py-2 rounded-lg text-xs sm:text-sm"
                             >
                               {getTechIcon(tech)}
                               <span className="ml-2">{tech}</span>
@@ -283,7 +283,7 @@ function ProjectPopup({ project, isOpen, onClose }) {
                       </div>
                     </div>
                     <div className="md:w-1/2">
-                      <p className="text-base text-zinc-400 mb-4">
+                      <p className="text-sm sm:text-base text-zinc-400 mb-4">
                         {project.description}
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 text-gray-100">
